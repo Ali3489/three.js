@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade Studio</title>
+    <!-- Include Three.js -->
+    <script type="module" src="path/to/three.module.js"></script>
+</head>
+<body>
+    <input type="file" id="fileInput" accept=".gsplat">
+    <button onclick="importGeometry()">Import Geometry</button>
+
+    <script type="module">
+        // Import necessary modules from Three.js
+        import * as THREE from 'path/to/three.module.js';
+
+        // Set up your scene, camera, and renderer
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Function to handle importing Gaussian Splats
+        function importGeometry() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function (event) {
+                    const data = event.target.result;
+                    // Parse the data and create Gaussian Splats
+                    parseAndRenderSplats(data);
+                };
+
+                reader.readAsText(file);
+            }
+        }
+
+        // Function to parse data and render Gaussian Splats
+        function parseAndRenderSplats(data) {
+            // Use the provided Three.js implementation or adapt it
+            // to parse the data and render Gaussian Splats
+            // Refer to the Three.js implementation by 0xca0a and
+            // the Luma Splat Library for guidance
+        }
+
+        // Your animation/rendering loop
+        function animate() {
+            requestAnimationFrame(animate);
+            // Update any animations or interactions here
+            renderer.render(scene, camera);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
